@@ -5,7 +5,7 @@ const tipPieseAutoSchema = new mongoose.Schema({
         type: String,
         trim: true,
         required: true,
-        maxlength: 32,
+        maxlength: 70,
         unique: true
     },
     photo: {

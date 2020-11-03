@@ -13,6 +13,10 @@ const amortizoareSchema = new mongoose.Schema({
         ref: 'SubtipPieseAuto',
         required: true
     },
+    masina: {
+        type: Array,
+        default: []
+    },
     distribuitor: {
         type: String,
         trim: true,

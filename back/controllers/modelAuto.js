@@ -163,21 +163,6 @@ exports.listMarciAuto = (req, res) => {
     })
 }
 
-exports.listRelated = (req, res) => {
-    let limit = req.query.limit ? parseInt(req.query.limit) : 6
-
-    // find all the products from that category. 
-    Product.find({marcaAuto: req.modelAuto.marcaAuto})
-        .populate('marcaAuto', '_id nume')
-        .exec((err,modeleAuto) => {
-            if(err) {
-                return res.status(400).json({
-                    error: "Modelele cautate nu au fost gasite"
-                })
-            }
-            res.json(modeleAuto)
-        })
-}
 
 exports.getModelAutoByMarca = (req, res) => {
     ModelAuto.find({marcaAuto: req.params.marcaAutoId})

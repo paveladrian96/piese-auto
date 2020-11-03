@@ -28,9 +28,9 @@ exports.create = (req, res) => {
         }
         //check for all fields
 
-        const {nume, tipPieseAuto} = fields
+        const {nume, tip, distribuitor, pret, cantitate, cod_produs, specificatii } = fields
 
-        if(!nume || !tipPieseAuto){
+        if(!nume ){
             return res.status(400).json({
                 error: "Introduceti numele subtipului piesei auto"
             })
@@ -73,9 +73,9 @@ exports.update = (req, res) => {
         }
         //check for all fields
 
-        const {nume, tipPieseAuto} = fields
+        const {nume, tip, distribuitor, pret, cantitate, cod_produs, specificatii } = fields
 
-        if(!nume || !tipPieseAuto){
+        if(!nume || !tip || !distribuitor || !pret || !cantitate || !cod_produs || !specificatii){
             return res.status(400).json({
                 error: "Introduceti numele"
             })
