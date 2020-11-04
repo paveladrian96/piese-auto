@@ -17,6 +17,20 @@ exports.subtipPieseAutoById = (req, res, next, id) => {
     })
 }
 
+exports.piesaByTip = (req, res, next, id) => {
+    SubtipPieseAuto.find({tip: req.subtipPieseAuto.tip}).exec((err, subtipPieseAuto) => {
+        if(err || !subtipPieseAuto) {
+            return res.status(400).json({
+                error: "Subtipul de piesa nu a fost gasita"
+            })
+        } 
+        req.subtipPieseAuto = subtipPieseAuto
+        next()
+    })
+}
+
+
+
 exports.create = (req, res) => {
     let form = new formidable.IncomingForm()
     form.keepExtensions = true
@@ -139,6 +153,24 @@ exports.list = (req, res) => {
             }
         res.json(data)
     })
+}
+
+exports.listRelatedByName = (req, res) => {
+    let limit = req.query.limit ? parseInt(req.query.limit) : 6
+
+    // find all the products from that category.
+    SubtipPieseAuto.find({nume: req.subtipPieseAuto.nume})
+        .limit(limit)
+        .select("-photo")
+        //.populate('tip', '_id nume')
+        .exec((err, subtipuri) => {
+            if(err) {
+                return res.status(400).json({
+                    error: "Products not found"
+                })
+            }
+            res.json(subtipuri)
+        })
 }
 
 exports.photo = (req, res, next) => {
