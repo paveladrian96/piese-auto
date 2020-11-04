@@ -5,7 +5,7 @@ const subtipPieseAutoSchema = new mongoose.Schema({
     nume: {
         type: String,
         required: true,
-        maxlength: 30
+        maxlength: 60
     },
     tip: {
         type: ObjectId,
