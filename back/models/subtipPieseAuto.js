@@ -18,6 +18,11 @@ const subtipPieseAutoSchema = new mongoose.Schema({
         required: true,
         maxlength: 32
     },
+    distribuitorId: {
+        type: ObjectId,
+        ref: 'Distribuitori',
+        required: true
+    },
     cod_produs: {
         type: String,
         required: true,
