@@ -180,3 +180,17 @@ exports.photo = (req, res, next) => {
     }
     next()
 }
+
+exports.getPieseByTipPiesa = (req, res) => {
+    SubtipPieseAuto.find({tip: req.params.tipId})
+    .select("-photo")
+    .populate('tip', '_id nume')
+    .exec((err, subtipPieseAuto) => {
+        if(err) {
+            return res.status(400).json({
+                error: "Piesele cautate nu au fost gasite"
+            })
+        }
+        res.json(subtipPieseAuto)
+    })
+}
