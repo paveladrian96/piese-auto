@@ -2,7 +2,7 @@ const express = require("express")
 const router = express.Router()
 
 const {create, subtipPieseAutoById, update , remove, read, list, photo, listRelatedByName, piesaByTip
-    ,getPieseByTipPiesa} = require('../controllers/subtipPieseAuto')
+    ,getPieseByTipPiesa, listSorted, listBySearch, listSearch} = require('../controllers/subtipPieseAuto')
 
 const {requireSignin , isAuth, isAdmin} = require("../controllers/auth")
 const { userById } = require('../controllers/user')
@@ -17,6 +17,13 @@ router.get("/subtipPieseAuto/related/:subtipPieseAutoId", listRelatedByName)
 router.get("/subtipPieseAuto/photo/:subtipPieseAutoId", photo)
 
 router.get("/subtipPieseAuto/by/tip/:tipId", getPieseByTipPiesa)
+
+router.get("/subtipuriPieseAutoSorted", listSorted)
+router.get("/subtipuriPieseAuto/search", listSearch)
+
+// route - make sure its post
+router.post("/subtipuriPieseAuto/by/search", listBySearch);
+ 
 
 router.param('tipId', tipPieseAutoById)
 
