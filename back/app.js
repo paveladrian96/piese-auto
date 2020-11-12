@@ -41,6 +41,8 @@ const amortizoareRoutes = require("./routes/subtipuriPieseAuto/amortizoare")
 const motorRoutes = require("./routes/subtipuriPieseAuto/motor")
 const filtreRoutes = require("./routes/subtipuriPieseAuto/filtre")
 const distribuitoriRoutes = require("./routes/distribuitori")
+const braintreeRoutes = require("./routes/braintree")
+const orderRoutes = require("./routes/order")
 
 
 //routes middleware
@@ -54,6 +56,8 @@ app.use("/api", amortizoareRoutes)
 app.use("/api", motorRoutes)
 app.use("/api", filtreRoutes)
 app.use("/api", distribuitoriRoutes)
+app.use("/api", braintreeRoutes)
+app.use("/api", orderRoutes)
 
 const port = process.env.PORT || 8000
 
