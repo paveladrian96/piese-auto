@@ -7,7 +7,7 @@ const gateway = new braintree.BraintreeGateway({
     environment: braintree.Environment.Sandbox,
     merchantId: process.env.BRAINTREE_MERCHANT_ID,
     publicKey: process.env.BRAINTREE_PUBLIC_KEY,
-    privateKey: process.env.BRAINTREE_Private_KEY
+    privateKey: 'c93a61755e60d4b5f38f7d1502354a00'
 })
 
 
