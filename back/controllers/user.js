@@ -1,4 +1,5 @@
 const User = require('../models/user')
+const {Order} = require('../models/order')
 
 exports.userById = (req, res, next, id) => {
     User.findById(id).exec((err, user) => {
@@ -55,5 +56,19 @@ exports.addOrderToUserHistory = (req, res, next) => {
 
         next()
     })
+}
+
+exports.purchaseHistory = (req, res) => {
+    Order.find({user: req.profile._id})
+        .populate("user", "_id nume")
+        .sort('-created')
+        .exec((error, orders) => {
+            if(error) {
+                return res.status(400).json({
+                    error: errorHandler(error)
+                })
+            }
+            res.json(orders)
+        })
 }
 

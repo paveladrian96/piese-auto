@@ -15,6 +15,20 @@ exports.create = (req, res) => {
    })
 }
 
+exports.orderById = (req, res, next, id) => {
+    Order.findById(id)
+        .populate('products.product', 'nume pret')
+        .exec((err, order) => {
+            if(err || !order) {
+                return res.status(400).json({
+                    error: errorHandler(err)
+                })
+            }
+            req.order = order
+            next()
+        })
+}
+
 exports.listOrders = (req, res) => {
     Order.find()
         .populate('user', "_id nume adresa" )
@@ -27,4 +41,19 @@ exports.listOrders = (req, res) => {
             }
             res.json(orders)
         })
+}
+
+exports.getStatusValues = (req, res) => {
+    res.json(Order.schema.path('status').enumValues)
+}
+
+exports.updateOrderStatus = (req, res) => {
+    Order.update({_id: req.body.orderId}, {$set: {status: req.body.status}}, (err, order) => {
+        if(err) {
+            return res.status(400).json({
+                error: errorHandler(err)
+            })
+        }
+        res.json(order)
+    })
 }
