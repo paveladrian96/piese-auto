@@ -7,9 +7,7 @@ import * as ROUTES from "../constants/routes"
 export function AlegeProducatorContainer({dimension="big"}){
 
     const [distribuitori, setDistribuitori] = useState([])
-    const [modeleAuto, setModeleAuto] = useState([])
     const [error, setError] = useState([])
-    const [toggle, setToggle] = useState(0)
 
 
     const init = () => {

@@ -8,8 +8,6 @@ export function SelectCarContainer(){
     const [marciAuto, setMarciAuto] = useState([])
     const [modeleAuto, setModeleAuto] = useState([])
     const [error, setError] = useState([])
-    const [toggle, setToggle] = useState(0)
-    const [modelSelectat, setModelSelectat] = useState('')
     const [values, setValues] = useState({
         motoare: ["diesel", "benzina"],
         marcaAutoSelectata: '',

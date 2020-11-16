@@ -1,8 +1,8 @@
 import React, {useState, useEffect} from "react"
 import { Add } from "../../components"
 import { isAutheticated} from "../../apiFunctions/auth"
-import {createSubtipPiesaAuto, updateSubtipPiesaAuto} from "../../apiFunctions/adminManager"
-import {getSubtipuriPiese, getDistribuitori} from "../../apiFunctions/getProducts"
+import { updateSubtipPiesaAuto} from "../../apiFunctions/adminManager"
+import { getDistribuitori} from "../../apiFunctions/getProducts"
 import {getTipuriPiese, getPieseByTip} from "../../apiFunctions/getProducts"
 
 export function EditeazaSubtipPiesaContainer() {
@@ -11,7 +11,6 @@ export function EditeazaSubtipPiesaContainer() {
 
     const [piese, setPiese] = useState([])
     const [load, setLoad] = useState('')
-    const [detaliiPiesa, setDetaliiPiesa] = useState([])
     const [error, setError] = useState([])
     const [values, setValues] = useState({
         piesaId: '',
@@ -36,8 +35,8 @@ export function EditeazaSubtipPiesaContainer() {
         formData: ''
     })
 
-    const {nume, formData, distribuitorId, piesaId, distribuitori,
-            distribuitor, pret, cantitate, cod_produs, specificatii, reducere, vandute, tipuriPiese, tip} = values
+    const {nume, formData, piesaId, distribuitori,
+            distribuitor, pret, cantitate, cod_produs, specificatii, reducere, vandute, tipuriPiese} = values
 
     const init = () => {
         getTipuriPiese()

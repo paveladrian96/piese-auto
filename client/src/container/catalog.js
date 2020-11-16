@@ -1,13 +1,12 @@
 import React, {useState, useEffect} from  "react"
 import {  getTipuriPiese, getSubtipuriPiese } from "../apiFunctions/getProducts"
 import ShowImage from "../utils/ShowImage"
-import { Catalog, Piesa } from "../components"
+import { Catalog } from "../components"
 import * as ROUTES from "../constants/routes"
 
 const CatalogContainer =  ({dimension="big"}) => {
     const [tipPieseAuto, setTipPieseAuto] = useState([])
     const [error, setError] = useState([])
-    const [toggle, setToggle] = useState({})
     let [pieseAutoUnice, setPieseAutoUnice] = useState([])
 
     const init = () => {

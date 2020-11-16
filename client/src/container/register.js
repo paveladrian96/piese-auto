@@ -30,8 +30,7 @@ export function RegisterContainer(){
     const {user} = isAutheticated()
 
     const {nume, prenume, email, telefon, judet, localitate, adresa, codPostal, 
-        password, passwordConfirmation, error, success,
-        emailLogin, passwordLogin, redirectToRefferrer }= values
+        password, error, emailLogin, passwordLogin, redirectToRefferrer }= values
 
 
     const handleChange = name => event => {

@@ -1,8 +1,6 @@
-import React, {useEffect, useState} from  "react"
+import React from  "react"
 import { Distribuitor, Piesa} from "../components"
 import CatalogContainer from "./catalog"
-import ShowImage from "../utils/ShowImage"
-import { searchPiese} from "../apiFunctions/getProducts"
 import PiesaContainer from "./piesa"
 
 export function AlegePiesaByNameContainer ({props}){

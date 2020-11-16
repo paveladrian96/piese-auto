@@ -1,9 +1,5 @@
 import React, {useState, useEffect} from  "react"
-import {Redirect} from  "react-router-dom"
 import { listRelatedByName, getDistribuitoriById, searchPiese } from "../apiFunctions/getProducts"
-import ShowImage from "../utils/ShowImage"
-import { Distribuitor} from "../components"
-import {addItem } from "../apiFunctions/cartHelpers"
 import CardPiesa from "./card"
 
 const PiesaContainer =  ({piesaId, getPiesaNume, piesaNume}) => {

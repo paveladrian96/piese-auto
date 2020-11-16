@@ -3,7 +3,6 @@ import { getTipuriPiese, getSubtipuriPiese } from "../apiFunctions/getProducts"
 import ShowImage from "../utils/ShowImage"
 import { Piesa } from "../components"
 import * as ROUTES from "../constants/routes"
-import { Piese } from "../components/alegeDistribuitor/styles/alegeDistribuitor"
 
 export function AlegePiesaContainer () {
     const [tipPieseAuto, setTipPieseAuto] = useState([])

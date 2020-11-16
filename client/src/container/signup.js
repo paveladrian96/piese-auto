@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react"
+import React from "react"
 import {Register} from "../components"
 
 export function SignUpContainer ({values, setValues, type, handleUpdate, clickSubmitSignup}) {
 
     const {nume, prenume, email, telefon, judet, localitate, adresa, codPostal, 
-        password, passwordConfirmation, error, success, redirectToRefferrer }= values
+        password, passwordConfirmation }= values
 
     const handleChange = name => event => {
             setValues({...values, error: false, [name]: event.target.value})
