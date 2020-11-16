@@ -39,7 +39,7 @@ export function UserContainer() {
                                         return (
                                             <div key={i}>
                                                 <h6>Numele piesei: {p.nume}</h6>
-                                                <h6>Pretul piesei: ${p.pret}</h6>
+                                                <h6>Pretul piesei: {p.pret} RON</h6>
                                                 <h6>
                                                     Data achizitie:{" "}
                                                     {moment(p.createdAt).fromNow()}
@@ -72,7 +72,7 @@ export function UserContainer() {
                     <User.Link to={ROUTES.cart}>
                         Cosul meu
                     </User.Link>
-                    <User.Link to={ROUTES.HOME}>
+                    <User.Link to={ROUTES.updateUser}>
                         Update profilul meu
                     </User.Link>
                 </User.Card>
@@ -83,10 +83,16 @@ export function UserContainer() {
                         Informatiile mele
                     </User.Subtitle>
                     <User.Paragraph>
-                        {user.nume}
+                        {user.nume} {user.prenume}
                     </User.Paragraph>
                     <User.Paragraph>
                         {user.email}
+                    </User.Paragraph>
+                    <User.Paragraph>
+                        {user.telefon}
+                    </User.Paragraph>
+                    <User.Paragraph>
+                        Judet: {user.judet}, Localitate: {user.localitate}, Adresa: {user.adresa}, Cod Postal: {user.codPostal}
                     </User.Paragraph>
                     <User.Paragraph>
                         { user.role === 1 ? "Admin" : "Inregistrat"}
@@ -96,7 +102,7 @@ export function UserContainer() {
                     <User.Subtitle>
                         Istoria achizitiilor
                     </User.Subtitle>
-                    {purchaseHistory(history)}
+                    {history && purchaseHistory(history)}
                 </User.Card>
             </User.Right>
             </User.Content>

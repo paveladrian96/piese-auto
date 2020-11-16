@@ -47,7 +47,6 @@ const PiesaContainer =  ({piesaId, getPiesaNume, piesaNume}) => {
                     console.log(res.error)
                 } else {
                     setPieseByName(res)
-                    console.log(res)
                     res.map((d) => {
                         getDistribuitoriById(d.distribuitorId)
                             .then(res => {

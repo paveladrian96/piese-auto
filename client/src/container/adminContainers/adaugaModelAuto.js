@@ -61,8 +61,6 @@ export function AdaugaModelContainer() {
     const clickSubmit = (event) => {
         event.preventDefault()
         setValues({...values, error:'', loading:true})
-        console.log(values)
-
         createModelAuto(user._id, token, formData)
             .then(data => {
                 if(data.error){

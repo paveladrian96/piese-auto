@@ -52,7 +52,6 @@ export const createTipPiesaAuto = (userId, token, tipPiesaAuto) => {
 }
 
 export const createSubtipPiesaAuto = (userId, token, subtipPiesaAuto) => {
-    console.log(subtipPiesaAuto)
     return fetch(`${API}/subtipPieseAuto/create/${userId}`, {
          method: "POST",
          headers: {

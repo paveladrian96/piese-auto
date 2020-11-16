@@ -15,7 +15,6 @@ export function ChooseCarContainer({dimension="big"}){
 
 
     const init = () => {
-        console.log(`${dimension}`)
         getMarciAuto()
             .then(data => {
                 if(data.error) {

@@ -4,6 +4,7 @@ import {signup, signin, authenticate} from "../apiFunctions/auth"
 import { Redirect } from "react-router-dom"
 import {isAutheticated} from "../apiFunctions/auth"
 import * as ROUTES from "../constants/routes"
+import { SignUpContainer } from "./signup"
 
 
 export function RegisterContainer(){
@@ -25,16 +26,13 @@ export function RegisterContainer(){
         loading: false,
         redirectToRefferrer: false
     })
+    const [toggle, setToggle] = useState(false)
     const {user} = isAutheticated()
 
     const {nume, prenume, email, telefon, judet, localitate, adresa, codPostal, 
         password, passwordConfirmation, error, success,
         emailLogin, passwordLogin, redirectToRefferrer }= values
 
-    const handleSubmit = (e) =>{
-        e.preventDefault()
-        console.log({values})
-    }
 
     const handleChange = name => event => {
         setValues({...values, error: false, [name]: event.target.value})
@@ -54,10 +52,27 @@ export function RegisterContainer(){
                         email: '',
                         password: '',
                         error: '',
-                        success: true
+                        success: true,
+                    })
+                    signin({email, password})
+                    .then(data => {
+                        if(data.error) {
+                            setValues({...values, error: data.error, loading: false} )
+                        } else {
+                            authenticate(
+                                data,
+                                () => {
+                                    setValues({
+                                        ...values,
+                                        redirectToRefferrer: true
+                                    })
+                                }
+                            )
+                        }
                     })
                 }
             })
+
     }
 
     const clickSubmitLogin = event => {
@@ -105,118 +120,6 @@ export function RegisterContainer(){
              </Register.Alert>
      }
 
-    const signUpForm = () => {
-        return (
-            
-            <Register.Signup>
-                <Register.Subtitle>
-                    Client nou? Inregistreaza-te
-                </Register.Subtitle>
-                <Register.Paragraph>
-                    Inregistreaza-te si cumperi mai repede si mai simplu. Beneficiezi de promotii si oferte promotionale exclusive clientilor inregistrati.
-                </Register.Paragraph>
-                <Register.SignupForm onSubmit={handleSubmit}>
-                    <Register.Subheader>
-                        Date de contact
-                    </Register.Subheader>
-                    <Register.Section>
-                        <Register.Label>
-                            Email:
-                            <Register.Input 
-                                value={email}
-                                onChange = {handleChange('email')}
-                            />
-                        </Register.Label>
-                        <Register.Label>
-                            Nume:
-                            <Register.Input 
-                                value={nume}
-                                onChange = {handleChange('nume')}
-                            />
-                        </Register.Label>
-                        <Register.Label>
-                            Prenume:
-                            <Register.Input 
-                                value={prenume}
-                                onChange = {handleChange('prenume')}
-                            />
-                        </Register.Label>
-                        <Register.Label>
-                            Telefon:
-                            <Register.Input 
-                                value={telefon}
-                                onChange = {handleChange('telefon')}
-                            />
-                        </Register.Label>
-                    </Register.Section>
-                    <Register.Subheader>
-                        Adresa
-                    </Register.Subheader>
-                    <Register.Section>
-                        <Register.Label>
-                            Judet:
-                            <Register.Input 
-                                value={judet}
-                                onChange = {handleChange('judet')}
-                            />
-                        </Register.Label>
-                        <Register.Label>
-                            Localitate:
-                            <Register.Input 
-                                value={localitate}
-                                onChange = {handleChange('localitate')}
-                            />
-                        </Register.Label>
-                        <Register.Label>
-                            Adresa:
-                            <Register.Input 
-                                value={adresa}
-                                onChange = {handleChange('adresa')}
-                            />
-                        </Register.Label>
-                        <Register.Label>
-                            Cod Postal:
-                            <Register.Input 
-                                value={codPostal}
-                                onChange = {handleChange('codPostal')}
-                            />
-                        </Register.Label>
-                    </Register.Section>
-                    <Register.Subheader>
-                        Parola
-                    </Register.Subheader>
-                    <Register.Section>
-                        <Register.Label>
-                            Parola:
-                            <Register.Input 
-                                value={password}
-                                type="password"
-                                onChange = {handleChange('password')}
-                            />
-                        </Register.Label>
-                        <Register.Label>
-                            Confirma parola
-                            <Register.Input 
-                                value={passwordConfirmation}
-                                type="password"
-                                onChange = {handleChange('passwordConfirmation')}
-                            />
-                        </Register.Label>
-                    </Register.Section>
-                    <Register.Submit 
-                    type="submit"
-                    onClick={clickSubmitSignup}
-                    >
-                        Inregistreaza-te
-                    </Register.Submit>
-                </Register.SignupForm>
-                <Register.SignupButton>
-                    Inregistreaza-te
-                </Register.SignupButton>
-            </Register.Signup>
-        )
-    }
-
     const signInForm = () => {
         return(
             <Register.Signin>
@@ -227,7 +130,7 @@ export function RegisterContainer(){
                     Ai mai cumparat de la noi sau esti deja inregistrat?
                 </Register.Paragraph>
                 <Register.LoginForm>
-                    <Register.Label>
+                    <Register.Label style={{width: "100%"}}>
                             Email:
                             <Register.Input 
                                 value={emailLogin}
@@ -235,7 +138,7 @@ export function RegisterContainer(){
                             />
                         </Register.Label>
                         
-                        <Register.Label>
+                        <Register.Label style={{width: "100%"}}>
                             Parola:
                             <Register.Input 
                                 type="password"
@@ -257,14 +160,32 @@ export function RegisterContainer(){
 
 
     return (
-        <>
         <Register>
-            {signUpForm()}
-            {signInForm()}
-            
+            <Register.Flex>
+                {ShowError()}  
+                {!toggle && <Register.Signup>
+                    <Register.Subtitle>
+                    Nu ai un cont?
+                </Register.Subtitle>
+                <Register.Paragraph>
+                    Inregistreaza-te pentru a beneficia de ultimele oferte!
+                </Register.Paragraph>
+                <Register.Submit
+                    onClick={() => setToggle(true)}
+                >
+                    Inregistreaza-te
+                </Register.Submit> 
+                </Register.Signup>}
+                {toggle && <SignUpContainer values={values} 
+                    setValues={setValues} 
+                    type={'register'} 
+                    clickSubmitSignup={clickSubmitSignup}
+            /> }
+            </Register.Flex>
+            <Register.Flex>
+                {signInForm()}
+            </Register.Flex>     
+            {redirectUser()}    
         </Register>
-        {ShowError()}
-        {redirectUser()}
-        </>
     )
 }

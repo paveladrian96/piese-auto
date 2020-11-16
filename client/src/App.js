@@ -27,6 +27,7 @@ import AlegeProducatori from './pages/alegeProducatori';
 import AlegePiesaByName from './pages/alegePiesaByName';
 import Cart from './pages/cart';
 import Orders from './pages/adminPages/orders';
+import UpdateUser from './pages/updateUser';
 
 function App() {
   return (
@@ -49,6 +50,7 @@ function App() {
         <Route exact path = {ROUTES.alegeMarca} component={AlegeMarca} />
         <Route exact path = {ROUTES.cart} component={Cart} />
         <PrivateRoute exact path={ROUTES.userDashboard} component={UserDashboard}/>
+        <PrivateRoute exact path={ROUTES.updateUser} component={UpdateUser}/>
         <AdminRoute exact path={ROUTES.adminDashboard} component={AdminDashboard}/>
         <AdminRoute exact path={ROUTES.adaugaMarcaAuto} component={AdaugaMarcaAuto}/>
         <AdminRoute exact path={ROUTES.adaugaModelAuto} component={AdaugaModelAuto}/>

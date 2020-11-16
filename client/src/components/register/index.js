@@ -11,24 +11,17 @@ import {Container,
         Subheader,
         Section,
         LoginForm,
-        Alert
+        Alert,
+        Flex
     } from "./styles/register"
-
-const ToggleContext = createContext();
 
 export default function Register({children, ...restProps}){
     return <Container {...restProps}>{children}</Container>
 }
 
 Register.Signup = function RegisterSignup({children, ...restProps}){
-
-    const [toggleShow, setToggleShow] = useState(false)
-
     return (
-        <ToggleContext.Provider value={{toggleShow, setToggleShow}}>
             <Signup {...restProps}>{children}</Signup>
-        </ToggleContext.Provider>
-        
     )
 }
 
@@ -45,20 +38,15 @@ Register.Paragraph = function RegisterParagraph({children, ...restProps}){
 }
 
 Register.SignupButton = function RegisterSignup({children, ...restProps}){
-    const {toggleShow, setToggleShow} = useContext(ToggleContext)
-
-    return (
-        !toggleShow && <SignupButton onClick={()=>setToggleShow(true)}  {...restProps}>
+    return ( <SignupButton {...restProps}>
             {children}
         </SignupButton>
     )
 }
 
 Register.SignupForm = function RegisterSignupForm({children, ...restProps}){
-    const {toggleShow} = useContext(ToggleContext)
 
-    return (
-        toggleShow && <SignupForm {...restProps}>{children}</SignupForm>
+    return ( <SignupForm {...restProps}>{children}</SignupForm>
     )
 }
 
@@ -88,4 +76,8 @@ Register.LoginForm = function RegisterLoginForm({children, ...restProps}) {
 
 Register.Alert = function RegisterAlert({children, ...restProps}) {
     return <Alert {...restProps}>{children}</Alert>
+}
+
+Register.Flex = function RegisterFlex({children, ...restProps}) {
+    return <Flex {...restProps}>{children}</Flex>
 }

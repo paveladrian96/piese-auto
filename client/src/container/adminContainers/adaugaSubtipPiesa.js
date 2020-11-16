@@ -58,8 +58,6 @@ export function AdaugaSubtipPiesaContainer() {
     const clickSubmit = (event) => {
         event.preventDefault()
         setValues({...values, error:'', loading:true})
-        console.log(values)
-
         createSubtipPiesaAuto(user._id, token, formData)
             .then(data => {
                 if(data.error){

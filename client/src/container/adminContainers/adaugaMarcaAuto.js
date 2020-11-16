@@ -37,7 +37,6 @@ export function AdaugaMarcaContainer() {
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        console.log(values)
         setValues({...values, error:'', loading:true})
 
         createMarcaAuto(user._id, token, formData)

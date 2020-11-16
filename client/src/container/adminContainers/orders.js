@@ -18,7 +18,6 @@ export function OrdersContainer() {
                     console.log(data.error)
                 } else {
                     setOrders(data)
-                    console.log(data)
                 }
             })
     }

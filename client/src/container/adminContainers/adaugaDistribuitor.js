@@ -37,7 +37,6 @@ export function AdaugaDistribuitorContainer() {
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        console.log(values)
         setValues({...values, error:'', loading:true})
 
         createDistribuitor(user._id, token, formData)

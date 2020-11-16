@@ -153,6 +153,10 @@ export const Basket = styled(ReachRouterLink)`
         text-decoration: none;
     
     }
+
+    &:hover {
+        color: inherit;
+    }
 `
 
 export const Search = styled.input`
@@ -172,6 +176,7 @@ export const SearchButton = styled(ReachRouterLink)`
 
     &:hover {
         text-decoration: underline;
+        color: ${pallete.light_color};
     }
     
 

@@ -37,7 +37,6 @@ export function AdaugaTipPiesaContainer() {
 
     const clickSubmit = (event) => {
         event.preventDefault()
-        console.log()
         setValues({...values, error:'', loading:true})
 
         createTipPiesaAuto(user._id, token, formData)

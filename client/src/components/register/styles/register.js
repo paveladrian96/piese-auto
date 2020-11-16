@@ -47,12 +47,14 @@ export const SignupForm = styled.form`
 export const Label = styled.label`
     font-size: 1.2em;
     display: block;
-    width: fit
+    width: fit;
+    width: 45%;
 `
 export const Input = styled.input`
     font-size: 1.2em;
     color: ${pallete.dark_color};
     display: block;
+    max-width: 100%;
 `
 
 export const Submit = styled.button`
@@ -76,10 +78,11 @@ export const Subheader = styled.h2`
 `
 
 export const Section = styled.div`
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 1em;
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
     box-sizing: border-box;
+    justify-content: space-between;
 `
 
 export const LoginForm= styled.form``
@@ -90,4 +93,9 @@ export const Alert = styled.div`
   background-color: ${pallete.red_color}; /* Red */
   color: white;
   margin-bottom: 15px;
+`
+
+export const Flex = styled.div`
+  display: flex;
+  flex-direction: column;
 `

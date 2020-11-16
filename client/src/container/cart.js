@@ -8,6 +8,7 @@ import Checkout from "./checkout"
 
 export function CartContainer ({run, setRun}){
     const [items, setItems] = useState([])
+    const [pretTotal, setPretTotal] = useState([])
     
     useEffect(()=>{
         setItems(getCart())
@@ -70,14 +71,14 @@ export function CartContainer ({run, setRun}){
             <Cart.ContentPayment>
                 <Cart.PaymentInfo>
                     <Cart.ParagraphBig>
-                        Veți primi 9,71 RON în puncte bonus în 7 zile la achiziționarea acestor produse 
+                        Veți primi {(pretTotal*0.12).toFixed(2)} RON în puncte bonus în 7 zile la achiziționarea acestor produse 
                     </Cart.ParagraphBig>
                     <Cart.ParagraphSmall>
                         Achitați până la 12% din valoarea comenzii dumneavoastră cu bonusurile acumulate.
                     </Cart.ParagraphSmall>
                 </Cart.PaymentInfo>
                 <Cart.Payment>
-                    <Checkout products={items} run={run} setRun={setRun} />
+                    <Checkout products={items} run={run} setRun={setRun} pretTotal={pretTotal} setPretTotal={setPretTotal} />
                 </Cart.Payment>
             </Cart.ContentPayment>
         </Cart>

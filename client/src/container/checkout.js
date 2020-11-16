@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 import DropIn from "braintree-web-drop-in-react"
 import {emptyCart} from "../apiFunctions/cartHelpers"
 
-const Checkout = ({products, run, setRun}) => {
+const Checkout = ({products, run, setRun, pretTotal, setPretTotal}) => {
     const [data, setData] = useState({
         success: false,
         clientToken: null,
@@ -14,8 +14,7 @@ const Checkout = ({products, run, setRun}) => {
         adresa: ''
     })
 
-    const [pret, setPret] = useState(0)
-
+    const {user} = isAutheticated()
     const userId = isAutheticated() && isAutheticated().user._id
     const token = isAutheticated() && isAutheticated().token
 
@@ -26,12 +25,21 @@ const Checkout = ({products, run, setRun}) => {
                     setData({...data, error: data.error})
                 } else {
                     setData({ clientToken: data.clientToken})
+                   if(user) {setData({ ...data, adresa: `
+                        Judet: ${user.judet}, 
+                        Localitate: ${user.localitate}, 
+                        Adresa: ${user.adresa}, 
+                        Telefon: ${user.telefon}, 
+                        Email: ${user.email}, 
+                        `,
+                        success: false})}
                 }
             })
     }
 
     useEffect(() => {
         getToken(userId, token)
+        
     }, [])
 
     useEffect(() =>{
@@ -42,17 +50,16 @@ const Checkout = ({products, run, setRun}) => {
         let pretCalculat = 0
         products.map((item) => {
             pretCalculat +=item.pret*item.count
-            console.log(item.count)
         })
-        setPret(pretCalculat)
+        setPretTotal(pretCalculat)
     }
 
     const showCheckout = () => {
         return isAutheticated() ? (
             <div >{showDropIn()}</div>
         ): (
-            <Link to="/signin">
-                <button className="btn btn-primary">Sign in to checkout</button>
+            <Link to="/register">
+                <button className="btn btn-primary">Inregistreaza-te pentru a finaliza comanda</button>
             </Link>
         )
     }
@@ -69,16 +76,14 @@ const Checkout = ({products, run, setRun}) => {
         let getNonce = data.instance
             .requestPaymentMethod()
             .then(data => {
-                //console.log(data)
                 nonce = data.nonce
                 const paymentData = {
                     paymentMethodNonce: nonce,
-                    amount: pret
+                    amount: pretTotal
                 }
 
                 processPayment(userId, token, paymentData)
                     .then(response => {
-                        console.log(response)
                         // empty cart
                         // create order
                         const createOrderData = {
@@ -113,8 +118,8 @@ const Checkout = ({products, run, setRun}) => {
                 {data.clientToken !== null && products.length > 0 ? (
                     <div>
                         <div >
-                            <label className="text-muted">Delivery address</label>
-                            <textarea 
+                            <label className="text-muted">Adresa de livrare</label>
+                            <textarea style={{height: "170px", padding: ".2em"}}
                                 onChange={handleAddress}
                                 className="form-control"
                                 value={data.adresa}
@@ -129,7 +134,7 @@ const Checkout = ({products, run, setRun}) => {
                                 }
                             }} onInstance={instance => (data.instance = instance)}
                          />
-                         <button onClick={buy} className="btn btn-success btn-block">Pay</button>
+                         <button onClick={buy} className="btn btn-success btn-block">Plateste</button>
                     </div>
                 ) : null}
             </div>
@@ -147,7 +152,7 @@ const Checkout = ({products, run, setRun}) => {
     const showSuccess = success => {
         return(
             <div className="alert alert-info" style={{display: success ? '' : "none"}}>
-                Thank you! Your payment was successfull!
+                Multumim! Plata a fost efectuata cu succes!
             </div>
         )
     }
@@ -155,7 +160,7 @@ const Checkout = ({products, run, setRun}) => {
 
     return (
         <div>
-            <h2>Total: {pret} RON</h2>
+            <h2>Total: {pretTotal} RON</h2>
             {showError(data.error)}
             {showSuccess(data.success)}
             {showCheckout()}

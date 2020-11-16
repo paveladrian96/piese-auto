@@ -66,7 +66,6 @@ export function EditeazaSubtipPiesaContainer() {
                     ...values, 
                     distribuitori: data2, 
                 })
-                console.log(data2)
             }
         })
     }
@@ -91,7 +90,6 @@ export function EditeazaSubtipPiesaContainer() {
                     setError(data.error)
                 } else {
                     setPiese(data)
-                    console.log(data)
                 }
             })
         
@@ -102,13 +100,10 @@ export function EditeazaSubtipPiesaContainer() {
         formData.set(name, value)
         setValues({...values, [name]: value, error: false}) 
         getPiese(event.target.value)
-        
-        console.log(values)
     }
 
     const handleChangePiesa = event => {
         const value = event.target.value
-        console.log(event.target.value)
         piese.map((p) => {
             if(p._id === value){
                 setValues({...values, 
@@ -133,8 +128,6 @@ export function EditeazaSubtipPiesaContainer() {
             }
            
         })
-       
-        console.log(values)
     }
 
     const handleChange = name => event => {
@@ -147,7 +140,6 @@ export function EditeazaSubtipPiesaContainer() {
     const clickSubmit = (event) => {
         event.preventDefault()
         setValues({...values, error:'', loading:true})
-        console.log(values)
 
         updateSubtipPiesaAuto(user._id, token, piesaId, formData)
             .then(data => {

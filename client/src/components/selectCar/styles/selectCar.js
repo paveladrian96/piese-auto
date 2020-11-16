@@ -51,6 +51,8 @@ export const Select = styled.select`
     border: 1px solid ${pallete.light_color};
     box-shadow: 2px 2px 2px ${pallete.dark_color};
 
+    
+
    
 `
 
@@ -70,6 +72,7 @@ export const Button = styled(ReachRouterLink)`
 
     &:hover {
         text-decoration: underline;
+        color: ${pallete.light_color};
     }
 
 `

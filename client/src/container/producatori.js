@@ -13,7 +13,6 @@ export function AlegeProducatorContainer({dimension="big"}){
 
 
     const init = () => {
-        console.log(`${dimension}`)
         getDistribuitori()
             .then(data => {
                 if(data.error) {

@@ -2,7 +2,6 @@ import React , {useState, useEffect} from "react"
 import { Header } from "../components"
 import * as ROUTES from "../constants/routes"
 import {isAutheticated, signout} from "../apiFunctions/auth"
-import {getTipuriPiese, searchPiese} from "../apiFunctions/getProducts"
 import { useHistory } from 'react-router-dom'
 import * as pallete from "../constants/theme"
 import {getCart} from "../apiFunctions/cartHelpers"
@@ -11,7 +10,6 @@ import {getCart} from "../apiFunctions/cartHelpers"
 
 export const HeaderContainer =  ({run}) =>{
 
-    const [error, setError] = useState('')
     const [data, setData] = useState({
         tipuri: [],
         tip: '',
@@ -23,29 +21,16 @@ export const HeaderContainer =  ({run}) =>{
     const [items, setItems] = useState([])
     const [pret, setPret] = useState(0)
 
-    const { tipuri, tip, search, results, searched } = data
+    const { search } = data
 
-    const  loadTipuriPiese = () => {
-        getTipuriPiese()
-        .then(data => {
-            if(data.error) {
-                setError(data.error)
-            } else {
-                setData({...data,
-                        tipuri: data})
-            }
-        }) 
-    }
 
     useEffect(() =>{
-        loadTipuriPiese()
         setItems(getCart())
         
     },[run])
 
     useEffect(() =>{
        PretTotal()
-        console.log(run)
     },[items])
 
 
@@ -74,7 +59,6 @@ export const HeaderContainer =  ({run}) =>{
         let pretCalculat = 0
         items.map((item) => {
             pretCalculat +=item.pret*item.count
-            console.log(item.count)
         })
         setPret(pretCalculat)
         
