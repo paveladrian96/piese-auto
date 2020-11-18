@@ -1,7 +1,7 @@
 import React from "react"
 import {Container, PreHeader, Main, AdminDetails, Logo, Button, InfoClient, InfoShop,
         LogoText, LogoImg, Search, Details, SearchButton, SearchField, ContainerMax,
-        RightSide, Basket, ButtonSmall, Select, Option} from "./styles/header"
+        RightSide, Basket, ButtonSmall, Select, Option, ContainerMaxMain} from "./styles/header"
 
 
 export default function Header({children, ...restProps}){
@@ -82,4 +82,8 @@ Header.RightSide = function HeaderRightSide({children, ...restProps}){
 
 Header.Basket = function HeaderBasket({children, src, ...restProps}){
     return <Basket {...restProps}>{src && <img src={src} alt="Login"/>} {children}</Basket>
+}
+
+Header.ContainerMaxMain = function HeaderContainerMaxMain({children, ...restProps}){
+    return <ContainerMaxMain {...restProps}>{children}</ContainerMaxMain>
 }

@@ -195,6 +195,20 @@ exports.getPieseByTipPiesa = (req, res) => {
     })
 }
 
+exports.getPieseByDistribuitor = (req, res) => {
+    SubtipPieseAuto.find({distribuitorId: req.params.distribuitoriId})
+    .select("-photo")
+    .populate('distribuitorId', '_id nume')
+    .exec((err, subtipPieseAuto) => {
+        if(err) {
+            return res.status(400).json({
+                error: "Piesele cautate nus au fost gasite"
+            })
+        }
+        res.json(subtipPieseAuto)
+    })
+}
+
 // by sell = /subtipuriPieseAutoSorted/sortBy=vandute&order=desc&limit=4
 // by arrival = /subtipuriPieseAutoSorted/sortBy=createdAt&order=desc&limit=4
 

@@ -6,7 +6,7 @@ import { isAutheticated} from "../apiFunctions/auth"
 export function AdminContainer() {
 
     const {user} = isAutheticated()
-    const {nume, email, role} = user
+    const {nume, prenume, email, role} = user
 
 
     return(
@@ -17,7 +17,7 @@ export function AdminContainer() {
                 </Admin.Title>
                 <Admin.InfoList>
                     <Admin.InfoListItem>
-                        {nume}
+                        {nume} {prenume}
                     </Admin.InfoListItem>
                     <Admin.InfoListItem>
                         {email}
@@ -25,10 +25,13 @@ export function AdminContainer() {
                     <Admin.InfoListItem>
                         {role === 1 ? "Admin" : "Registered"}
                     </Admin.InfoListItem>
-                    <Admin.Button to={ROUTES.orders}>
-                            Manage your orders
-                    </Admin.Button>
                 </Admin.InfoList>
+                <Admin.Title>
+                    Gestioneaza comenzile magazinului
+                </Admin.Title>
+                <Admin.Button to={ROUTES.orders}>
+                            Comenzile magazinului
+                    </Admin.Button>
             </Admin.Info>
             <Admin.Manager>
                 <Admin.Title>

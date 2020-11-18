@@ -19,6 +19,7 @@ export const adaugaDistribuitor = '/adauga-distribuitor'
 export const alegePiesa = '/alege-piesa'
 export const alegeDistribuitor = "/alege-piesa/:piesaId"
 export const alegePiesaByName = "/alege-piesa-by"
+export const alegePiesaByMarca = "/alege-piesa-by-distribuitor"
 export const alegeMarca = "/alege-marca"
 export const alegeProducatori = "/alege-producatori"
 export const cart = "/cart"

@@ -44,7 +44,7 @@ export function CartContainer ({run, setRun}){
             </Cart.Header>
             
             {items && items.map((piesa, i) => (
-            <Cart.Content>
+            <Cart.Content key={i}>
                 <Cart.Articol>
                     <Cart.Button src={require("../images/logos/close.png")} onClick={() =>handleClick(piesa._id)}/>
 

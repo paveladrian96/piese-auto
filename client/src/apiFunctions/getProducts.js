@@ -51,6 +51,16 @@ export const getPieseByTip = tipId => {
     .catch(err => console.log(err))
 }
 
+export const getPieseByDistribuitor = distribuitoriId => {
+    return fetch(`${API}/subtipPieseAuto/by/distribuitor/${distribuitoriId}`, {
+        method: 'GET'
+    })
+    .then(response => {
+        return response.json()
+    })
+    .catch(err => console.log(err))
+}
+
 
 
 export const listRelatedByName = (piesaId) => {
@@ -82,6 +92,8 @@ export const getDistribuitoriById = distribuitorId => {
     })
     .catch(err => console.log(err))
 }
+
+
 
 export const searchPiese = params => {
     const query = queryString.stringify(params)

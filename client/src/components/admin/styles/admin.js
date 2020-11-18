@@ -9,23 +9,32 @@ export const Container = styled.div`
     justify-content: space-between;
 `
 
-export const Info = styled.div``
+export const Info = styled.div`
+    width: 35%;
+`
 
-export const Manager = styled.div``
+export const Manager = styled.div`
+    width: 60%;
+`
 
 export const Title = styled.h1``
 
-export const InfoList = styled.ul``
+export const InfoList = styled.div`
+    margin-top: 1.5em;
+    border: ${pallete.light_color} 1px solid;
+    padding: .5em;
+`
 
-export const InfoListItem = styled.li``
+export const InfoListItem = styled.p`
+    font-size: 1.1rem;
+`
 
 export const Button = styled(ReachRouterLink)`
     display: block;
     border: none;
-    width: 25%;
+    width: fit-content;
     font-size: 1rem;
     cursor: pointer;
-    align-items: center;
     background: ${pallete.constrast_color};
     color: ${pallete.light_color};
     text-decoration: none;

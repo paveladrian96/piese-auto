@@ -23,11 +23,19 @@ export const Title = styled.h1`
 export const Catalog = styled.div`
     width: 30%;
 
+    @media (max-width: ${pallete.phoneWidth}) {
+        display: none;
+    }
+
 `
 
 export const Piese = styled.div`
     width: 70%;
     border-left: 1px solid ${pallete.light_color}
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        width: 100%;
+    }
 `
 
 export const Card = styled.div`
@@ -36,17 +44,30 @@ export const Card = styled.div`
     justify-content: space-between;
     border-bottom: 1px solid ${pallete.light_color};
     padding-bottom: 1em;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        flex-direction: column;
+    }
 `
 
 export const Img = styled.div`
     width: 25%;
     margin-bottom: 2em;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        width: 100%;
+    }
 `
 
 export const Description = styled.div`
     width: 40%;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        width: 100%;
+    }
+    
 `
 export const DescriptionHeader = styled.div`
     margin-bottom: 1.5rem;

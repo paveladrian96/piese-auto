@@ -99,6 +99,7 @@ export const HeaderContainer =  ({run}) =>{
                 
             </Header.PreHeader>
             </Header.ContainerMax>
+            <Header.ContainerMaxMain>
             <Header.Main>
                 <Header.InfoShop>
                     <Header.Button
@@ -178,7 +179,7 @@ export const HeaderContainer =  ({run}) =>{
                         </Header.Basket>
                     </Header.RightSide>
             </Header.Main>
-           
+            </Header.ContainerMaxMain>
         </Header>
     )
 }

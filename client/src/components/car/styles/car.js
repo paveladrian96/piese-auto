@@ -10,6 +10,10 @@ export const Container = styled.div`
     margin: 0 auto;
     justify-content: space-between;
     padding: 3em 0;
+
+    @media (max-width: ${pallete.phoneWidth}){
+        padding: ${pallete.paddingPhone};
+    }
     
 `
 
@@ -27,6 +31,9 @@ export const Title = styled.h1`
         font-weight: 800;
     }
 
+    @media (max-width: ${pallete.phoneWidth}){
+        font-size: 1rem;
+    }
 
 `
 export const MarciAuto = styled.div`
@@ -36,6 +43,10 @@ export const MarciAuto = styled.div`
     max-height: 60vh;
     overflow: auto;
     padding: .2em 0;
+
+    @media (max-width: ${pallete.phoneWidth}){
+        grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    }
 `
 
 export const MarciAutoSmall = styled.div`
@@ -57,6 +68,12 @@ export const Name = styled.p`
     text-align: center;
     padding: .4em;
     background: ${pallete.light_color};
+
+    @media (max-width: ${pallete.phoneWidth}){
+        font-size: .7rem;
+    }
+
+    
 `
 
 export const MarciAutoCard = styled(ReachRouterLink)`
@@ -96,17 +113,25 @@ border: none;
     background: ${pallete.constrast_color};
     color: ${pallete.light_color};
     text-decoration: none;
+
+    @media (max-width: ${pallete.phoneWidth}){
+        font-size: .9rem;
+    }
 `
 
 export const Caroserie = styled.h2`
     font-size: 1.4rem;
     border-bottom: 1px solid ${pallete.gray_color}
+
+    @media (max-width: ${pallete.phoneWidth}){
+        font-size: .8rem;
+    }
 `
 
 export const TitleCaroussel = styled.div`
     display: flex;
-  
     font-size: 1rem;
+
 
 `
 
@@ -127,6 +152,10 @@ export const TitleLink = styled(ReachRouterLink)`
         color: ${pallete.constrast_color};
         font-weight: 800;
         text-decoration: none;
+    }
+
+    @media (max-width: ${pallete.phoneWidth}){
+        font-size: 1rem;
     }
 
 

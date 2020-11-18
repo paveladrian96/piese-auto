@@ -7,13 +7,23 @@ export const Container = styled.div`
     flex-direction: column;
     margin: 0 auto;
     justify-content: space-between;
+    width: 100%;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        padding: ${pallete.paddingPhone}
+    }
 `
 export const ContainerSmall = styled.div`
     display: flex;
     margin: 0 auto;
+    width: 100%;
     justify-content: space-between;
     max-width: ${pallete.widthMax};
     overflow: auto;
+    
+    @media (max-width: ${pallete.phoneWidth}) {
+        padding: ${pallete.paddingPhone}
+    }
 `
 export const TitleMain = styled(ReachRouterLink)`
     font-size: 1.6rem;
@@ -33,6 +43,10 @@ export const TitleMain = styled(ReachRouterLink)`
         font-weight: 800;
         text-decoration: none;
     }
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: 1rem;
+    }
 `
 
 export const Title = styled.h1`
@@ -41,6 +55,10 @@ export const Title = styled.h1`
     padding-left: 1em;
     border-bottom: 1px solid ${pallete.light_color}
     font-weight: 500;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .7rem;
+    }
 `
 
 export const Card = styled.div`

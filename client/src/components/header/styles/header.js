@@ -16,7 +16,9 @@ export const ContainerMax = styled.div`
     background: ${pallete.light_color};
 `
 
-
+export const ContainerMaxMain = styled.div`
+    background: ${pallete.dark_color};
+`
 
 export const PreHeader = styled.div`
     max-width: ${pallete.widthMax};
@@ -28,22 +30,41 @@ export const PreHeader = styled.div`
     align-items: center;
     padding: .7em 0;
     
+    @media (max-width: ${pallete.windowsWidth}) {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 ${pallete.paddingPhone};
+        justify-content: space-between;
+     }
 
 `
 
 export const Main = styled.div`
-    width: ${pallete.widthMax};
+    max-width: ${pallete.widthMax};
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: .5em 0;
+    padding: .7em 0;
+
+    @media (max-width: ${pallete.windowsWidth}) {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 0 ${pallete.paddingPhone};
+        justify-content: space-between;
+     }
+
 `
 
 export const AdminDetails = styled.p`
     display: block;
     margin: .1rem;
     font-size: .9rem;
+    
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .6rem;
+    }
+
 `
 
 export const LogoImg = styled.img`
@@ -52,6 +73,11 @@ export const LogoImg = styled.img`
     object-fit: cover;
 
     margin: 0;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        width: 100px;
+        height: 28px;
+    }
 `
 export const Logo = styled(ReachRouterLink)`
     display: flex;
@@ -71,11 +97,15 @@ export const LogoText = styled.p`
     color: ${pallete.constrast_color};
     margin:0;
     color: #d62d2a;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: 1.3rem;
+    }
 `
 
 export const Button = styled(ReachRouterLink)`
     border: none;
-    padding: 0.9em 0;
+    padding: 0.9em 1em;
     
     font-size: 1rem;
     height: fit-content;
@@ -90,6 +120,11 @@ export const Button = styled(ReachRouterLink)`
         filter: brightness(0) invert(.9);
         width: 1.5em;
         margin-right: .4em;
+    }
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .8rem;
+        padding: .5rem .8rem;
     }
 `
 
@@ -118,17 +153,28 @@ export const ButtonSmall = styled(ReachRouterLink)`
     }
 `
 export const RightSide = styled.div`
-    width: 25%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    width: 25%;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        display: none;
+    }
 `
 
 export const InfoShop = styled.div`
-    width: 60%;
     display: flex;
     justify-content: space-between;
+    width: 70%;
 
+    @media (max-width: ${pallete.macWidth}) {
+        flex-wrap: wrap;
+    }
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        flex-direction: column;
+    }
 `
 
 export const InfoClient = styled.div`
@@ -160,14 +206,12 @@ export const Basket = styled(ReachRouterLink)`
 `
 
 export const Search = styled.input`
-    font-size: 1.2rem;
     padding: .5em 1em;
     border: ${pallete.constrast_color} 2px solid;
     
 `
 
 export const SearchButton = styled(ReachRouterLink)`
-    font-size: 1.2rem;
     padding: .5em 1em;
     background: ${pallete.constrast_color};
     border: none;
@@ -177,6 +221,7 @@ export const SearchButton = styled(ReachRouterLink)`
     &:hover {
         text-decoration: underline;
         color: ${pallete.light_color};
+        text-align: center;
     }
     
 
@@ -184,6 +229,15 @@ export const SearchButton = styled(ReachRouterLink)`
 
 export const SearchField = styled.form`
     display: flex;
+    font-size: 1.2rem;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        max-width: 320px;
+        font-size: .8rem;
+     }
 `
 
 export const Details = styled.div`

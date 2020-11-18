@@ -18,6 +18,10 @@ export const Title = styled.h1`
     font-weight: ${({bold})=> bold}; 
     text-indent: .8em;
     font-weight: 800;
+
+    @media(max-width: ${pallete.phoneWidth}) {
+        font-size: .7rem
+    }
 `
 
 export const StepsRow = styled.div`
@@ -31,15 +35,25 @@ export const StepsColumn = styled.div`
     flex-direction: column;
     margin-right: .5em;
     align-items: center;
+    text-align: center;
 `
 export const StepsText = styled.p`
     font-size: .8rem;
+
+    @media(max-width: ${pallete.phoneWidth}) {
+        font-size: .6rem
+    }
 `
 
 export const StepsImg = styled.img`
     width: 2em;
     height: 2.2em;
     filter: brightness(.2) invert(${({invert})=> invert});
+
+    @media(max-width: ${pallete.phoneWidth}) {
+        width: 1.3em;
+        height: 1.5em;
+    }
 
     
 `
@@ -51,13 +65,18 @@ export const Select = styled.select`
     border: 1px solid ${pallete.light_color};
     box-shadow: 2px 2px 2px ${pallete.dark_color};
 
-    
+    @media(max-width: ${pallete.phoneWidth}) {
+        font-size: .8rem
+    }
 
    
 `
 
 export const Option = styled.option`
     font-size: 1rem;
+    @media(max-width: ${pallete.phoneWidth}) {
+        font-size: .7rem
+    }
 `
 
 export const Button = styled(ReachRouterLink)`
@@ -73,6 +92,10 @@ export const Button = styled(ReachRouterLink)`
     &:hover {
         text-decoration: underline;
         color: ${pallete.light_color};
+    }
+
+    @media(max-width: ${pallete.phoneWidth}) {
+        font-size: .8rem
     }
 
 `

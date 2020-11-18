@@ -9,14 +9,21 @@ export const Container = styled.div`
     margin: 0 auto;
     justify-content: space-between;
     padding: 3em 0;
-    
+
+    @media (max-width: ${pallete.phoneWidth}){
+        padding: ${pallete.paddingPhone};
+    }
 `
 
 export const Title = styled.h1`
     font-size: 1.5rem;
     text-align: left;
     margin: 0 0 1em;
-    border-bottom: 1px solid ${pallete.dark_color}
+    border-bottom: 1px solid ${pallete.dark_color};
+
+    @media (max-width: ${pallete.phoneWidth}){
+        font-size: 1rem;
+    }
 
 `
 
@@ -26,6 +33,10 @@ export const CardContainer = styled.div`
     grid-gap: .5em;
     padding: .2em 0;
     margin: 0;
+
+    @media (max-width: ${pallete.phoneWidth}){
+        grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+    }
 
 `
 
@@ -68,4 +79,8 @@ export const Subtitle = styled.h5`
     font-size: 1rem;
     display: flex;
     align-items: center;
+
+    @media (max-width: ${pallete.phoneWidth}){
+        font-size: .8rem;
+    }
 `

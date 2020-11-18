@@ -28,6 +28,7 @@ import AlegePiesaByName from './pages/alegePiesaByName';
 import Cart from './pages/cart';
 import Orders from './pages/adminPages/orders';
 import UpdateUser from './pages/updateUser';
+import AlegePiesaByDistribuitor from './pages/alegePiesaByDistribuitor';
 
 function App() {
   return (
@@ -46,6 +47,7 @@ function App() {
         <Route exact path = {ROUTES.alegePiesa}><AlegePiesa /></Route>
         <Route exact path = {ROUTES.alegeDistribuitor} component={AlegeDistribuitor} />
         <Route exact path = "/alege-piesa-by/:search" component={AlegePiesaByName} />
+        <Route exact path = "/alege-piesa-by-distribuitor/:distribuitorId" component={AlegePiesaByDistribuitor} />
         <Route exact path = {ROUTES.alegeProducatori} component={AlegeProducatori}/>
         <Route exact path = {ROUTES.alegeMarca} component={AlegeMarca} />
         <Route exact path = {ROUTES.cart} component={Cart} />
