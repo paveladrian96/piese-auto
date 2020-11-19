@@ -202,6 +202,7 @@ export const InfoClient = styled.div`
 
     @media (max-width: ${pallete.phoneWidth}) {
         padding: ${pallete.paddingPhone};
+        flex-direction: column;
     }
 
 `
