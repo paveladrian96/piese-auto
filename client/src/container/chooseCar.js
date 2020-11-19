@@ -74,6 +74,7 @@ export function ChooseCarContainer({dimension="big"}){
         var models = modeleAuto.map(function(obj) { return (obj.nume); });
         models = models.filter(function(v,i) { return models.indexOf(v) == i; });
         return(
+            models.length !== 0 ?
              <Car.MarciAuto>
                 {models.map((model, i) => (
 
@@ -86,7 +87,8 @@ export function ChooseCarContainer({dimension="big"}){
                        <Car.Name>{model}</Car.Name>
                    </Car.MarciAutoCard>
                 ))}
-            </Car.MarciAuto>
+            </Car.MarciAuto>:
+            <h4>Nu exista modele pentru aceasta marca</h4>
         )
     }
 

@@ -2,13 +2,20 @@ import React, {useState, useContext, createContext } from "react"
 import {Container, PreHeader, Main, AdminDetails, Logo, Button, InfoClient, InfoShop,
         LogoText, LogoImg, Search, Details, SearchButton, SearchField, ContainerMax,
         RightSide, Basket, ButtonSmall, Select, Option, ContainerMaxMain,
-        ContainerMobile, SectionMobile, Extension, Meniu} from "./styles/header"
+        ContainerMobile, SectionMobile, Extension, Meniu, MeniuList, MeniuClose, MeniuContainer,
+        MeniuListItem} from "./styles/header"
 
 const ToggleContext = createContext()
 
 
 export default function Header({children, ...restProps}){
-    return <Container {...restProps}>{children}</Container>
+    const[toggleShow, setToggleShow] = useState(false)
+
+    return (
+        <ToggleContext.Provider value={{toggleShow, setToggleShow}}>
+            <Container {...restProps}>{children}</Container>
+        </ToggleContext.Provider>
+    )
 }
 
 Header.ContainerMax = function HeaderContainerMax({children, ...restProps}) {
@@ -96,12 +103,9 @@ Header.ContainerMobile = function HeaderContainerMobile({children, ...restProps}
 }
 
 Header.SectionMobile = function HeaderSectionMobile({children, ...restProps}){
-    const[toggleShow, setToggleShow] = useState(false)
-
+    
     return (
-        <ToggleContext.Provider value={{toggleShow, setToggleShow}}>
          <SectionMobile {...restProps}>{children}</SectionMobile>
-         </ToggleContext.Provider>
     )
 }
 
@@ -126,5 +130,27 @@ Header.Meniu = function HeaderContainerMeniu({children, ...restProps}){
         toggleShow ? <Meniu {...restProps}>{children}</Meniu> : null
     )
     
+}
+
+Header.MeniuList = function HeaderMeniuList({children, ...restProps}){
+    return <MeniuList {...restProps}>{children}</MeniuList>
+}
+
+Header.MeniuContainer = function HeaderMeniuContainer({children, ...restProps}){
+    return <MeniuContainer {...restProps}>{children}</MeniuContainer>
+}
+
+Header.MeniuClose = function HeaderMeniuClose({children, src, ...restProps}){
+    const {toggleShow, setToggleShow} = useContext(ToggleContext)
+
+    return <MeniuClose onClick={()=>setToggleShow(!toggleShow)} {...restProps}> 
+                
+                {toggleShow ? (
+                <img  src={require("../../images/logos/close.png")} alt="Close"/>
+                ) : (
+                <img  src={require("../../images/logos/hamburger.png")} alt="Add"/>
+                )}
+                {children}
+           </MeniuClose>
 }
 

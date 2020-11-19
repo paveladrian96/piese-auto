@@ -6,19 +6,39 @@ export const Container = styled.div`
     max-width: ${pallete.widthMax};
     padding: 2em 0;
     margin: 0 auto;
+
+    @media (max-width: ${pallete.windowsWidth}) {
+        padding: ${pallete.paddingMac};
+    }
+    
+    @media(max-width: ${pallete.phoneWidth}) {
+        padding: ${pallete.paddingPhone};
+    }
 `
 
 export const Content = styled.div`
     display: flex;
     justify-content: space-between;
+
+    @media(max-width: ${pallete.phoneWidth}) {
+        flex-direction: column;
+    }
 `
 
 export const Left = styled.div`
     width: 35%;
+
+    @media(max-width: ${pallete.phoneWidth}) {
+        width: 100%;
+    }
 `
 
 export const Right = styled.div`
     width: 60%;
+
+    @media(max-width: ${pallete.phoneWidth}) {
+        width: 100%;
+    }
 `
 
 export const Title = styled.h1`

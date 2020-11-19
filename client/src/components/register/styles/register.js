@@ -10,24 +10,33 @@ export const Container = styled.div`
 
     @media (max-width: ${pallete.phoneWidth}) {
         flex-direction: column;
-        padding: ${pallete.paddingPhone};
     }
 `
 
 export const Signin = styled.div`
     
-    width: 50%;
+    width: 100%;
+
+    @media (max-width: ${pallete.windowsWidth}) {
+        padding: 0 ${pallete.paddingMac};
+    }
 
     @media (max-width: ${pallete.phoneWidth}) {
        width: 100%;
+       padding: ${pallete.paddingPhone};
     }
 `
 
 export const Signup = styled.div`
-    width: 50%;
+    width: 90%;
+
+    @media (max-width: ${pallete.windowsWidth}) {
+        padding: 0 ${pallete.paddingMac};
+    }
 
     @media (max-width: ${pallete.phoneWidth}) {
         width: 100%;
+        padding: ${pallete.paddingPhone};
     }
 `
 
@@ -36,6 +45,7 @@ export const Subtitle = styled.h2`
 
     @media (max-width: ${pallete.phoneWidth}) {
         font-size: 1.3rem;
+        margin-top: 1em;
     }
 
 `

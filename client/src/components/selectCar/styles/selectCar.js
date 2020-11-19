@@ -10,6 +10,7 @@ export const Container = styled.div`
     padding: 1em;
     margin-bottom: 2em;
     box-sizing: border-box;
+
 `
 
 export const Title = styled.h1`

@@ -9,9 +9,14 @@ export const Container = styled.div`
     justify-content: space-between;
     width: 100%;
 
-    @media (max-width: ${pallete.phoneWidth}) {
-        padding: ${pallete.paddingPhone}
+    @media (max-width: ${pallete.windowsWidth}) {
+        padding: ${pallete.paddingMac};
     }
+    
+    @media (max-width: ${pallete.phoneWidth}) {
+        padding: ${pallete.paddingPhone};
+    }
+
 `
 export const ContainerSmall = styled.div`
     display: flex;
@@ -20,10 +25,10 @@ export const ContainerSmall = styled.div`
     justify-content: space-between;
     max-width: ${pallete.widthMax};
     overflow: auto;
+
+   
+
     
-    @media (max-width: ${pallete.phoneWidth}) {
-        padding: ${pallete.paddingPhone}
-    }
 `
 export const TitleMain = styled(ReachRouterLink)`
     font-size: 1.6rem;

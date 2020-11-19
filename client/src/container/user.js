@@ -38,10 +38,10 @@ export function UserContainer() {
                                     {h.products.map((p, i) => {
                                         return (
                                             <div key={i}>
-                                                <h6>Numele piesei: {p.nume}</h6>
-                                                <h6>Pretul piesei: {p.pret} RON</h6>
-                                                <h6>
-                                                    Data achizitie:{" "}
+                                                <h6 > <span style={{fontWeight: "300"}}>Numele piesei:</span > {p.nume}</h6>
+                                                <h6 ><span style={{fontWeight: "300"}}>Pretul piesei:</span> {p.pret} RON</h6>
+                                                <h6 >
+                                                    <span style={{fontWeight: "300"}}>Data achizitie:</span>{" "}
                                                     {moment(p.createdAt).fromNow()}
                                                 </h6>
                                                 <br />

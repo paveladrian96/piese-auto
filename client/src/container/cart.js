@@ -27,6 +27,7 @@ export function CartContainer ({run, setRun}){
     }
 
     return(
+        items.length !== 0 ?
         <Cart>
             <Cart.Header>
                 <Cart.Articol>
@@ -84,6 +85,9 @@ export function CartContainer ({run, setRun}){
                     <CheckoutContainer products={items} run={run} setRun={setRun} pretTotal={pretTotal} setPretTotal={setPretTotal} />
                 </Cart.Payment>
             </Cart.ContentPayment>
+        </Cart>: 
+        <Cart>
+            <h4>Nu exista nicio piesa auto in cos.</h4>
         </Cart>
        
     )

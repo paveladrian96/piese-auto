@@ -7,12 +7,16 @@ export const Container = styled.div`
     max-width: ${pallete.widthMax};
     margin: 2em auto;
     justify-content: space-between;
-    padding: 3em ;
+    padding: ${pallete.paddingMac} ;
     border: 4px solid ${pallete.light_color};
 
     @media (max-width: ${pallete.phoneWidth}) {
         margin: 1em auto;
         padding: ${pallete.paddingPhone};
+        border: none;
+    }
+
+    @media(max-width: ${pallete.windowsWidth}) {
         border: none;
     }
 

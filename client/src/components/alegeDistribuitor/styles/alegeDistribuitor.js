@@ -9,8 +9,13 @@ export const Container = styled.div`
     justify-content: space-between;
     padding: 3em 0;
 
+    @media(max-width: ${pallete.windowsWidth}) {
+        padding: ${pallete.paddingMac};
+    }
+
     @media (max-width: ${pallete.phoneWidth}) {
         padding: ${pallete.paddingPhone};
+        padding-left: 0;
     }
     
 `
@@ -31,6 +36,10 @@ export const Title = styled.h1`
 export const Catalog = styled.div`
     width: 30%;
 
+    @media (max-width: ${pallete.macWidth}) {
+        display: none;
+    } 
+
     @media (max-width: ${pallete.phoneWidth}) {
         display: none;
     }
@@ -40,6 +49,10 @@ export const Catalog = styled.div`
 export const Piese = styled.div`
     width: 70%;
     border-left: 1px solid ${pallete.light_color};
+
+    @media (max-width: ${pallete.macWidth}) {
+        width: 100%;
+    }
 
     @media (max-width: ${pallete.phoneWidth}) {
         width: 100%;

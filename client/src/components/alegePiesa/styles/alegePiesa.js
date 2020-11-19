@@ -10,6 +10,10 @@ export const Container = styled.div`
     justify-content: space-between;
     padding: 3em 0;
 
+    @media(max-width: ${pallete.windowsWidth}) {
+        padding: ${pallete.paddingMac};
+    }
+
     @media (max-width: ${pallete.phoneWidth}){
         padding: ${pallete.paddingPhone};
     }

@@ -104,7 +104,8 @@ export const HeaderContainer =  ({run}) =>{
     const showShopInfo = () => {
         return (
             <>
-            <Header.Button
+                    <Header.Button
+                            src={require("../images/logos/home2.png")}
                             to={ROUTES.HOME}
                             style={isActive(history, ROUTES.HOME)}
                     >
@@ -114,6 +115,7 @@ export const HeaderContainer =  ({run}) =>{
                     <Header.Button
                             to={ROUTES.alegePiesa}
                             style={isActive(history, ROUTES.alegePiesa)}
+                            src={require("../images/logos/piesa.png")}
                     >
                         Piese auto
                     </Header.Button>
@@ -121,12 +123,14 @@ export const HeaderContainer =  ({run}) =>{
                     <Header.Button
                             to={ROUTES.alegeMarca}
                             style={isActive(history, ROUTES.alegeMarca)}
+                            src={require("../images/logos/marca.png")}
                     >
                         Marca auto
                     </Header.Button>
                     <Header.Button
                             to={ROUTES.alegeProducatori}
                             style={isActive(history, ROUTES.alegeProducatori)}
+                            src={require("../images/logos/producatori.png")}
                     >
                         Producatori
                     </Header.Button>
@@ -216,11 +220,8 @@ export const HeaderContainer =  ({run}) =>{
                         to={ROUTES.cart}
                     >
                     </Header.ButtonSmall>
-                    <Header.Meniu>
-                        <Header.Extension />
-                        {showInfoClient()}
-                        {showShopInfo()}
-                    </Header.Meniu>
+                    
+                    
                 </Header.SectionMobile>
                 <Header.SectionMobile> 
                     {searchForm()}
@@ -230,8 +231,24 @@ export const HeaderContainer =  ({run}) =>{
         )
     }
 
+    const showMeniu = () => {
+        return (
+                    <Header.MeniuContainer>
+                        <Header.Meniu>
+                            <Header.MeniuList>
+                                {showInfoClient()}
+                                {showShopInfo()}
+                            </Header.MeniuList>
+                        <Header.MeniuClose />
+                        
+                    </Header.Meniu>
+                    </Header.MeniuContainer>
+        )
+    }
+
     return(
         <Header>
+            {showMeniu()}
             {showMobileHeader()}
             {showPreHeader()}
             {showMain()}

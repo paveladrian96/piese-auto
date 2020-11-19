@@ -7,6 +7,8 @@ export const Container = styled.div`
     color: ${pallete.light_color};
     display: flex;
     flex-direction: column;
+
+   
 `
 
 export const Title = styled.h1`
@@ -83,6 +85,10 @@ export const Row = styled.div`
         justify-content: space-between;
         margin-bottom: .5em;
      }
+
+     @media(max-width: ${pallete.windowsWidth}) {
+        padding: ${pallete.paddingMac};
+    }
 `
 
 export const Column = styled.div`

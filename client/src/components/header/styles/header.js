@@ -8,19 +8,18 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0;
-    
-
-    
-
 `
 
 export const ContainerMax = styled.div`
    
     background: ${pallete.light_color};
+
 `
 
 export const ContainerMaxMain = styled.div`
     background: ${pallete.dark_color};
+
+
 `
 
 export const PreHeader = styled.div`
@@ -36,7 +35,7 @@ export const PreHeader = styled.div`
     @media (max-width: ${pallete.windowsWidth}) {
         display: flex;
         flex-wrap: wrap;
-        padding: 0 ${pallete.paddingPhone};
+        padding: 0 ${pallete.paddingMac};
         justify-content: space-between;
      }
 
@@ -57,8 +56,7 @@ export const Main = styled.div`
 
     @media (max-width: ${pallete.windowsWidth}) {
         display: flex;
-        flex-wrap: wrap;
-        padding: 0 ${pallete.paddingPhone};
+        padding: 0 ${pallete.paddingMac};
         justify-content: space-between;
      }
 
@@ -130,13 +128,20 @@ export const Button = styled(ReachRouterLink)`
 
     img {
         filter: brightness(0) invert(.9);
-        width: 1.5em;
-        margin-right: .4em;
+            width: 2em;
+            margin-right: .7em;
     }
 
     @media (max-width: ${pallete.phoneWidth}) {
-        font-size: .8rem;
-        padding: .5rem .8rem;
+        font-size: .9rem;
+        padding: .7rem 1rem;
+        margin-bottom: 1.5em;
+
+        img {
+            filter: brightness(0) invert(.9);
+            width: 2em;
+            margin-right: .7em;
+        }
     }
 `
 
@@ -164,17 +169,29 @@ export const ButtonSmall = styled(ReachRouterLink)`
         margin-right: .4em;
     }
 
+
     @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .9rem;
+        margin-bottom: 1.5em;
+    
         img {
-            width: 2.5em;
+            filter: brightness(0) invert(.9);
+            width: 2em;
+            margin-right: .7em;
         }
     }
+
 `
 export const RightSide = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 25%;
+
+    @media (max-width: ${pallete.windowsWidth}) {
+        width: 40%;
+    }
+
 
     @media (max-width: ${pallete.phoneWidth}) {
         display: none;
@@ -186,8 +203,9 @@ export const InfoShop = styled.div`
     justify-content: space-between;
     width: 70%;
 
-    @media (max-width: ${pallete.macWidth}) {
+    @media (max-width: ${pallete.windowsWidth}) {
         flex-wrap: wrap;
+        width: 55%;
     }
 
     @media (max-width: ${pallete.phoneWidth}) {
@@ -199,6 +217,7 @@ export const InfoClient = styled.div`
     width: 100%;
     display: flex;
     justify-content: space-between;
+
 
     @media (max-width: ${pallete.phoneWidth}) {
         padding: ${pallete.paddingPhone};
@@ -315,9 +334,6 @@ export const SectionMobile = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-  
-    
-
 `
 
 export const Extension = styled.button`
@@ -334,12 +350,44 @@ export const Extension = styled.button`
 `
 
 export const Meniu = styled.div`
-        position: fixed;
-        height: 60vh;
-        top: .5em; 
-        left: .5em;
-        z-index: 20;
-        width: 90%;
-        background: ${pallete.dark_color};
+    background: #0a1a24;
+    position: fixed;
+    height: fit-content;
+    top: .5em; 
+    left: .5em;
+    z-index: 20;
+    width: 70%;
+    display: flex;
+    -webkit-transition: all 1s ease-in-out;
+    -moz-transition: all 1s ease-in-out;
+    -ms-transition: all 1s ease-in-out;
+    -o-transition: all 1s ease-in-out;
+    transition: all 1s ease-in-out;
 `
+export const MeniuList = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+export const MeniuContainer = styled.div`
+    display: flex;
+`
+
+export const MeniuClose = styled.button`
+    background: inherit;
+    border: none;
+    position: fixed;
+    top: .5em; 
+    right: .5em;
+    z-index: 20;
+    border-radius: 50px;
+
+    img {
+        filter: brightness(0) invert(1);
+        width: 2em;
+        text-decoration: none;
+
+    }
+ `
+
 
