@@ -2,7 +2,7 @@ import React, {useEffect, useState} from  "react"
 import {getCart, updateItem, removeItem} from "../apiFunctions/cartHelpers"
 import { Cart } from "../components"
 import ShowImage from "../utils/ShowImage"
-import Checkout from "./checkout"
+import CheckoutContainer from "./checkout"
 
 
 
@@ -57,13 +57,16 @@ export function CartContainer ({run, setRun}){
                     
                 </Cart.Articol>
                 <Cart.Info>
+                    <Cart.InfoHelper>Pret</Cart.InfoHelper>
                     {piesa.pret} RON
                 </Cart.Info>
                 <Cart.Info>
+                    <Cart.InfoHelper>Cantitate</Cart.InfoHelper>
                     <Cart.Count type="number"  onChange={handleChange(piesa._id)}
                         value={piesa.count}/>
                 </Cart.Info>
                 <Cart.Info>
+                    <Cart.InfoHelper>Cost</Cart.InfoHelper>
                     {piesa.pret * piesa.count} RON
                 </Cart.Info>
             </Cart.Content>
@@ -78,7 +81,7 @@ export function CartContainer ({run, setRun}){
                     </Cart.ParagraphSmall>
                 </Cart.PaymentInfo>
                 <Cart.Payment>
-                    <Checkout products={items} run={run} setRun={setRun} pretTotal={pretTotal} setPretTotal={setPretTotal} />
+                    <CheckoutContainer products={items} run={run} setRun={setRun} pretTotal={pretTotal} setPretTotal={setPretTotal} />
                 </Cart.Payment>
             </Cart.ContentPayment>
         </Cart>

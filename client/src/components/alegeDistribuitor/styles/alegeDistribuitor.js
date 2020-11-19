@@ -8,6 +8,10 @@ export const Container = styled.div`
     margin: 0 auto;
     justify-content: space-between;
     padding: 3em 0;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        padding: ${pallete.paddingPhone};
+    }
     
 `
 
@@ -16,7 +20,11 @@ export const Title = styled.h1`
     text-align: left;
     padding-left: 1em;
     padding-bottom: .5em;
-    border-bottom: 1px solid ${pallete.light_color}
+    border-bottom: 1px solid ${pallete.light_color};
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: 1rem;
+    }
 
 `
 
@@ -31,7 +39,7 @@ export const Catalog = styled.div`
 
 export const Piese = styled.div`
     width: 70%;
-    border-left: 1px solid ${pallete.light_color}
+    border-left: 1px solid ${pallete.light_color};
 
     @media (max-width: ${pallete.phoneWidth}) {
         width: 100%;
@@ -55,7 +63,7 @@ export const Img = styled.div`
     margin-bottom: 2em;
 
     @media (max-width: ${pallete.phoneWidth}) {
-        width: 100%;
+        margin-bottom: 1em;
     }
 `
 
@@ -88,12 +96,19 @@ export const DescriptionMain2 = styled.div`
 export const PiesaTitle = styled.h3`
     margin: .2rem 0;
     font-size: 1.2rem;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .9rem;
+    }
 `
 
 export const PiesaSubtitle = styled.h5`
     font-weight: 300;
     margin: .2rem 0;
     font-size: .9rem;
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .8rem;
+    }
 `
 
 export const PiesaParagraph = styled.p`
@@ -101,6 +116,11 @@ export const PiesaParagraph = styled.p`
     margin: .2rem 0;
     border-top: 1px solid ${pallete.light_color};
     border-bottom: 1px solid ${pallete.light_color};
+    
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .7rem;
+    }
+
 `
 
 export const PiesaInfo = styled.p`
@@ -119,6 +139,10 @@ export const Pret = styled.div`
     width: 25%;
     display: flex;
     flex-direction: column;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        width: 100%;
+    }
 `
 
 export const Garantie = styled.div`

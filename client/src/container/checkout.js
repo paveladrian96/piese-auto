@@ -4,8 +4,9 @@ import {isAutheticated} from "../apiFunctions/auth"
 import {Link} from "react-router-dom"
 import DropIn from "braintree-web-drop-in-react"
 import {emptyCart} from "../apiFunctions/cartHelpers"
+import { Checkout } from "../components"
 
-const Checkout = ({products, run, setRun, pretTotal, setPretTotal}) => {
+const CheckoutContainer = ({products, run, setRun, pretTotal, setPretTotal}) => {
     const [data, setData] = useState({
         success: false,
         clientToken: null,
@@ -160,7 +161,7 @@ const Checkout = ({products, run, setRun, pretTotal, setPretTotal}) => {
 
     return (
         <div>
-            <h2>Total: {pretTotal} RON</h2>
+            <Checkout.Total>Total: {pretTotal} RON</Checkout.Total>
             {showError(data.error)}
             {showSuccess(data.success)}
             {showCheckout()}
@@ -169,4 +170,4 @@ const Checkout = ({products, run, setRun, pretTotal, setPretTotal}) => {
 
 }
 
-export default Checkout
+export default CheckoutContainer

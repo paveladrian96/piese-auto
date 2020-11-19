@@ -7,25 +7,45 @@ export const Container = styled.div`
     margin: 0 auto;
     justify-content: space-between;
     padding: 2em 0;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        flex-direction: column;
+        padding: ${pallete.paddingPhone};
+    }
 `
 
 export const Signin = styled.div`
     
-    max-width: 600px;
-    padding: 1.5em;
+    width: 50%;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+       width: 100%;
+    }
 `
 
 export const Signup = styled.div`
-    max-width: 600px;
-    padding: 1.5em;
+    width: 50%;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        width: 100%;
+    }
 `
 
 export const Subtitle = styled.h2`
     font-size: 2.5em;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: 1.3rem;
+    }
+
 `
 
 export const Paragraph = styled.p`
     font-size: 1.2em;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .9rem;
+    }
 `
 
 export const SignupButton = styled.button`
@@ -37,6 +57,10 @@ export const SignupButton = styled.button`
     font-weight: 300;
     padding: .35em .9em;
     cursor: pointer;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: 1rem;
+    }
 `
 
 export const SignupForm = styled.form`
@@ -49,12 +73,20 @@ export const Label = styled.label`
     display: block;
     width: fit;
     width: 45%;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .8rem;
+    }
 `
 export const Input = styled.input`
     font-size: 1.2em;
     color: ${pallete.dark_color};
     display: block;
     max-width: 100%;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: .8rem;
+    }
 `
 
 export const Submit = styled.button`
@@ -67,7 +99,11 @@ export const Submit = styled.button`
     padding: .35em .9em;
     width: fit-content;
     margin-top: 1em;
-    cursor: pointer
+    cursor: pointer;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: 1rem;
+    }
 `
 
 export const Subheader = styled.h2`
@@ -75,6 +111,11 @@ export const Subheader = styled.h2`
     background: ${pallete.light_color};
     padding: .3em;
     box-shadow: 2.5px 5px;
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        font-size: 1rem;
+    }
+
 `
 
 export const Section = styled.div`

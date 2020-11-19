@@ -61,7 +61,27 @@ export const HeaderContainer =  ({run}) =>{
             pretCalculat +=item.pret*item.count
         })
         setPret(pretCalculat)
-        
+    }
+
+    const showPreHeader = () => {
+        return(
+            <Header.ContainerMax>
+                <Header.PreHeader>
+                    
+                    <Header.Logo to={ROUTES.HOME}>
+                        <Header.LogoImg  src={require("../images/logos/classic-auto-logo.jpg")} alt="Classic-Auto" />
+                        <Header.LogoText>Classic Auto</Header.LogoText>
+                    </Header.Logo>
+                    {searchForm()}
+                    <Header.Details>
+                        <Header.AdminDetails>Contacteaza-ne: <span style={{color: `${pallete.constrast_color}`, fontWeight: "800"}}>0752107410</span></Header.AdminDetails>
+                        <Header.AdminDetails>Program: Lun-Vin: 09:00 - 18:00</Header.AdminDetails>
+                        <Header.AdminDetails>E-mail: office@classicauto.ro</Header.AdminDetails>
+                    </Header.Details>
+                    
+                </Header.PreHeader>
+            </Header.ContainerMax>
+        )
     }
 
     const searchForm = () => {
@@ -81,28 +101,10 @@ export const HeaderContainer =  ({run}) =>{
         )
     }
 
-    return(
-        <Header>
-        <Header.ContainerMax>
-            <Header.PreHeader>
-                
-                <Header.Logo to={ROUTES.HOME}>
-                    <Header.LogoImg  src={require("../images/logos/classic-auto-logo.jpg")} alt="Classic-Auto" />
-                    <Header.LogoText>Classic Auto</Header.LogoText>
-                </Header.Logo>
-                {searchForm()}
-                <Header.Details>
-                    <Header.AdminDetails>Contacteaza-ne: <span style={{color: `${pallete.constrast_color}`, fontWeight: "800"}}>0752107410</span></Header.AdminDetails>
-                    <Header.AdminDetails>Program: Lun-Vin: 09:00 - 18:00</Header.AdminDetails>
-                    <Header.AdminDetails>E-mail: office@classicauto.ro</Header.AdminDetails>
-                </Header.Details>
-                
-            </Header.PreHeader>
-            </Header.ContainerMax>
-            <Header.ContainerMaxMain>
-            <Header.Main>
-                <Header.InfoShop>
-                    <Header.Button
+    const showShopInfo = () => {
+        return (
+            <>
+            <Header.Button
                             to={ROUTES.HOME}
                             style={isActive(history, ROUTES.HOME)}
                     >
@@ -128,9 +130,13 @@ export const HeaderContainer =  ({run}) =>{
                     >
                         Producatori
                     </Header.Button>
-                </Header.InfoShop>
-                <Header.RightSide>
-                    <Header.InfoClient>
+            </>
+        )
+    }
+
+    const showInfoClient = () => {
+        return (
+                <Header.InfoClient>
                             <Header.ButtonSmall  
                                 to={ROUTES.userDashboard}
                                 style={isActive(history, ROUTES.userDashboard)}
@@ -170,6 +176,18 @@ export const HeaderContainer =  ({run}) =>{
                                 Iesi din cont 
                             </Header.ButtonSmall>}
                         </Header.InfoClient>
+        )
+    }
+
+    const showMain = () => {
+        return (
+            <Header.ContainerMaxMain>
+            <Header.Main>
+                <Header.InfoShop>
+                    {showShopInfo()}
+                </Header.InfoShop>
+                <Header.RightSide>
+                        {showInfoClient()}
                         <Header.Basket
                         src={require("../images/logos/cart.png")}
                             to={ROUTES.cart}
@@ -180,6 +198,43 @@ export const HeaderContainer =  ({run}) =>{
                     </Header.RightSide>
             </Header.Main>
             </Header.ContainerMaxMain>
+        )
+    }
+
+    const showMobileHeader = () => {
+        return (
+            <Header.ContainerMobile>
+            
+                <Header.SectionMobile>
+                    <Header.Extension />
+                    <Header.Logo to={ROUTES.HOME}>
+                            <Header.LogoImg  src={require("../images/logos/classic-auto-logo.jpg")} alt="Classic-Auto" />
+                            <Header.LogoText>Classic Auto</Header.LogoText>
+                    </Header.Logo>
+                    <Header.ButtonSmall   
+                        src={require("../images/logos/cart.png")}
+                        to={ROUTES.cart}
+                    >
+                    </Header.ButtonSmall>
+                    <Header.Meniu>
+                        <Header.Extension />
+                        {showInfoClient()}
+                        {showShopInfo()}
+                    </Header.Meniu>
+                </Header.SectionMobile>
+                <Header.SectionMobile> 
+                    {searchForm()}
+                </Header.SectionMobile>
+            </Header.ContainerMobile>
+            
+        )
+    }
+
+    return(
+        <Header>
+            {showMobileHeader()}
+            {showPreHeader()}
+            {showMain()}
         </Header>
     )
 }

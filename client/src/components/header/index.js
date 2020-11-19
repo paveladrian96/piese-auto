@@ -1,7 +1,10 @@
-import React from "react"
+import React, {useState, useContext, createContext } from "react"
 import {Container, PreHeader, Main, AdminDetails, Logo, Button, InfoClient, InfoShop,
         LogoText, LogoImg, Search, Details, SearchButton, SearchField, ContainerMax,
-        RightSide, Basket, ButtonSmall, Select, Option, ContainerMaxMain} from "./styles/header"
+        RightSide, Basket, ButtonSmall, Select, Option, ContainerMaxMain,
+        ContainerMobile, SectionMobile, Extension, Meniu} from "./styles/header"
+
+const ToggleContext = createContext()
 
 
 export default function Header({children, ...restProps}){
@@ -87,3 +90,41 @@ Header.Basket = function HeaderBasket({children, src, ...restProps}){
 Header.ContainerMaxMain = function HeaderContainerMaxMain({children, ...restProps}){
     return <ContainerMaxMain {...restProps}>{children}</ContainerMaxMain>
 }
+
+Header.ContainerMobile = function HeaderContainerMobile({children, ...restProps}){
+    return <ContainerMobile {...restProps}>{children}</ContainerMobile>
+}
+
+Header.SectionMobile = function HeaderSectionMobile({children, ...restProps}){
+    const[toggleShow, setToggleShow] = useState(false)
+
+    return (
+        <ToggleContext.Provider value={{toggleShow, setToggleShow}}>
+         <SectionMobile {...restProps}>{children}</SectionMobile>
+         </ToggleContext.Provider>
+    )
+}
+
+Header.Extension = function HeaderExtension({children, src, ...restProps}){
+    const {toggleShow, setToggleShow} = useContext(ToggleContext)
+
+    return <Extension onClick={()=>setToggleShow(!toggleShow)} {...restProps}> 
+                
+                {toggleShow ? (
+                <img  src={require("../../images/logos/close.png")} alt="Close"/>
+                ) : (
+                <img  src={require("../../images/logos/hamburger.png")} alt="Add"/>
+                )}
+                {children}
+           </Extension>
+}
+
+Header.Meniu = function HeaderContainerMeniu({children, ...restProps}){
+    const {toggleShow} = useContext(ToggleContext)
+
+    return (
+        toggleShow ? <Meniu {...restProps}>{children}</Meniu> : null
+    )
+    
+}
+

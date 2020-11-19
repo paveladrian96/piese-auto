@@ -8,6 +8,9 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     margin: 0;
+    
+
+    
 
 `
 
@@ -37,6 +40,11 @@ export const PreHeader = styled.div`
         justify-content: space-between;
      }
 
+     @media (max-width: ${pallete.phoneWidth}) {
+        display: none;
+     }
+
+
 `
 
 export const Main = styled.div`
@@ -52,6 +60,10 @@ export const Main = styled.div`
         flex-wrap: wrap;
         padding: 0 ${pallete.paddingPhone};
         justify-content: space-between;
+     }
+
+     @media (max-width: ${pallete.phoneWidth}) {
+        display: none;
      }
 
 `
@@ -151,6 +163,12 @@ export const ButtonSmall = styled(ReachRouterLink)`
         width: 1.5em;
         margin-right: .4em;
     }
+
+    @media (max-width: ${pallete.phoneWidth}) {
+        img {
+            width: 2.5em;
+        }
+    }
 `
 export const RightSide = styled.div`
     display: flex;
@@ -182,6 +200,10 @@ export const InfoClient = styled.div`
     display: flex;
     justify-content: space-between;
 
+    @media (max-width: ${pallete.phoneWidth}) {
+        padding: ${pallete.paddingPhone};
+    }
+
 `
 
 export const Basket = styled(ReachRouterLink)`
@@ -203,11 +225,18 @@ export const Basket = styled(ReachRouterLink)`
     &:hover {
         color: inherit;
     }
+    
 `
 
 export const Search = styled.input`
     padding: .5em 1em;
     border: ${pallete.constrast_color} 2px solid;
+    display:block;
+    @media (max-width: ${pallete.phoneWidth}) {
+        width: 75%;
+
+    }
+
     
 `
 
@@ -217,6 +246,8 @@ export const SearchButton = styled(ReachRouterLink)`
     border: none;
     cursor: pointer;
     color: ${pallete.light_color};
+    display:block;
+    text-align: center;
 
     &:hover {
         text-decoration: underline;
@@ -224,6 +255,10 @@ export const SearchButton = styled(ReachRouterLink)`
         text-align: center;
     }
     
+    @media (max-width: ${pallete.phoneWidth}) {
+        width: 25%;
+
+    }
 
 `
 
@@ -232,10 +267,9 @@ export const SearchField = styled.form`
     font-size: 1.2rem;
 
     @media (max-width: ${pallete.phoneWidth}) {
-        display: flex;
-        flex-direction: column;
+        margin-top: .5em;
         justify-content: space-between;
-        max-width: 320px;
+        width: 100%;
         font-size: .8rem;
      }
 `
@@ -256,5 +290,55 @@ export const Option = styled.option`
     padding: .5em 1em;
     border: ${pallete.constrast_color} 2px solid;
     color: ${pallete.dark_color}
+`
+
+export const ContainerMobile = styled.div`
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: ${pallete.paddingPhone};
+    flex-direction: column;
+    
+
+     @media (min-width: ${pallete.phoneWidth}) {
+        display: none;
+     }
+
+
+`
+
+export const SectionMobile = styled.div`
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    
+
+`
+
+export const Extension = styled.button`
+    background: inherit;
+    border: none;
+
+    img {
+        filter: brightness(0) invert(1);
+        width: 3em;
+        text-decoration: none;
+
+    }
+ 
+`
+
+export const Meniu = styled.div`
+        position: fixed;
+        height: 60vh;
+        top: .5em; 
+        left: .5em;
+        z-index: 20;
+        width: 90%;
+        background: ${pallete.dark_color};
 `
 

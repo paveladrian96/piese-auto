@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Title, Articol, Info, Content, Header, Count, Name,
-    Img, Button, ContentPayment, Payment, PaymentInfo, ParagraphBig, ParagraphSmall} from "./styles/cart"
+    Img, Button, ContentPayment, Payment, PaymentInfo, ParagraphBig, ParagraphSmall, InfoHelper} from "./styles/cart"
 
 export default function Cart({children, ...restProps}){
     return <Container {...restProps}>{children}</Container>
@@ -16,6 +16,10 @@ Cart.Articol = function CartArticol({children, ...restProps}){
 
 Cart.Info = function CartInfo({children, ...restProps}){
     return <Info {...restProps}>{children}</Info>
+}
+
+Cart.InfoHelper = function CartInfoHelper({children, ...restProps}){
+    return <InfoHelper {...restProps}>{children}</InfoHelper>
 }
 
 Cart.Content = function CartContent({children, ...restProps}){
